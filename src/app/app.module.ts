@@ -1,18 +1,44 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
+//import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AllPetsComponent } from './all-pets/all-pets.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { petService } from './services/petService';
+import { AllPeopleComponent } from './all-people/all-people.component';
+import { AddPetComponent } from './add-pet/add-pet.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddPersonComponent } from './add-person/add-person.component';
+import { personService } from './services/personService';
+import { cityService } from './services/cityService';
+import { typeService } from './services/typeService';
+import { CommonModule } from '@angular/common';
+import { UpdatePersonComponent } from './update-person/update-person.component';
+import { UpdatePetComponent } from './update-pet/update-pet.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AllPetsComponent,
+    ToolbarComponent,
+    AllPeopleComponent,
+    AddPetComponent,
+    AddPersonComponent,
+    UpdatePersonComponent,
+    UpdatePetComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule
+    //MatIconModule,
   ],
-  providers: [],
+  providers: [petService, personService, cityService, typeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
