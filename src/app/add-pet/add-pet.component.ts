@@ -20,8 +20,6 @@ export class AddPetComponent {
 
 
   constructor(private petService: petService, private typeService: typeService, private formBuilder: FormBuilder){
-
-
     this.newPetForm = formBuilder.group({
       petId: new FormControl(),
       petName: new FormControl('', Validators.required),

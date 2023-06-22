@@ -1,0 +1,48 @@
+.onesPersonInfo{
+    border-color: rgb(255, 164, 27);
+    border: 10px;
+    font-weight: normal;
+    
+}
+
+.button{
+    background-color: rgb(82, 95, 225);
+    color: aliceblue;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 10%;
+    width: 100px;
+    border-color: rgb(82, 95, 225);
+}
+
+.button:hover{
+    background-color: rgb(43, 53, 161);
+    border-color: rgb(43, 53, 161);
+}
+
+h1{
+    text-align: center;
+}
+
+.people{
+    display: inline-block;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 5%;
+    align-items: center; 
+    /* justify-content: center; */
+}
+
+.searchPeople{
+    position: absolute;
+    right: 150px;
+}
+
+.search{
+    height: 20px;
+    width: 250px;
+}
+
+.buttons{
+    justify-items: center;
+}

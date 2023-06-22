@@ -16,7 +16,11 @@ import { cityService } from './services/cityService';
 import { typeService } from './services/typeService';
 import { CommonModule } from '@angular/common';
 import { UpdatePersonComponent } from './update-person/update-person.component';
-import { UpdatePetComponent } from './update-pet/update-pet.component'
+import { UpdatePetComponent } from './update-pet/update-pet.component';
+import { AllAdoptionsComponent } from './all-adoptions/all-adoptions.component';
+import { AddAdoptionComponent } from './add-adoption/add-adoption.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { PersonCardComponent } from './person-card/person-card.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { UpdatePetComponent } from './update-pet/update-pet.component'
     AddPetComponent,
     AddPersonComponent,
     UpdatePersonComponent,
-    UpdatePetComponent
+    UpdatePetComponent,
+    AllAdoptionsComponent,
+    AddAdoptionComponent,
+    LoginPageComponent,
+    PersonCardComponent
   ],
   imports: [
     BrowserModule,

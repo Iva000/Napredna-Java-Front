@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>All Pets</title>
-        
     </head>
 
     <body>
         <h1>All People</h1>
-        <input (input)="onSearch(search.value)" type="text" placeholder="Search by person's surname" #search>
+        <div  class="searchPeople">
+            <input (input)="onSearch(search.value)" type="text" placeholder="Search by person's surname" #search class="search">
+        </div>
         <div class="gridContainer">
-            <div class="petInfo" *ngFor="let person of filteredPeople">
-                <h4>JMBG: {{person.jmbg}}</h4>
-                <h4>Name: {{person.name}}</h4>
-                <h4>Surname: {{person.surname}}</h4>
-                <h4>Birth year: {{person.year_of_birth}}</h4>
-                <h4>Phone number: {{person.phone_number}}</h4>
-                <h4>City: {{person.city.name}}</h4>
-                <h4><button (click)="update(person.jmbg)">Change</button><button (click)="delete(person.jmbg)">Delete</button></h4>
+            <div class="people" *ngFor="let person of filteredPeople">
+                <div class="onesPersonInfo">
+                <h4><b>JMBG:</b> {{person.jmbg}}</h4>
+                <h4><b>Name:</b> {{person.name}}</h4>
+                <h4><b>Surname:</b> {{person.surname}}</h4>
+                <h4><b>Birth year:</b> {{person.year_of_birth}}</h4>
+                <h4><b>Phone number:</b> {{person.phone_number}}</h4>
+                <h4><b>City:</b> {{person.city.name}}</h4>
+                <h4 class="buttons"><button class="button" (click)="update(person.jmbg)">Change</button><button class="button" (click)="delete(person.jmbg)">Delete</button></h4>
+                </div>
             </div>
         </div>
     </body>
