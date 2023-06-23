@@ -7,6 +7,7 @@ import { petService } from '../services/petService';
 import { personService } from '../services/personService';
 import { HttpResponse } from '../network/HttpResponse';
 import { Adoption } from '../model/Adoption';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-adoption',
@@ -20,7 +21,7 @@ export class AddAdoptionComponent {
   public people!: Person[];
 
 
-  constructor(private adoptionService: adoptionService, private petService: petService, private personService: personService, private formBuilder: FormBuilder){
+  constructor(private adoptionService: adoptionService, private petService: petService, private personService: personService, private formBuilder: FormBuilder, private router: Router){
 
 
 
@@ -77,6 +78,7 @@ export class AddAdoptionComponent {
       this.adoptionService.addNewAdoption(adoption).subscribe((res)=>{
         console.log(res);
         alert(res.message);
+        this.router.navigate(['/adoptions']);
       })
     }
   }

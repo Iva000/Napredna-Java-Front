@@ -6,6 +6,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } 
 import { Pet } from '../model/Pet';
 import { Type } from '../model/Type';
 import { HttpResponse } from '../network/HttpResponse';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-pet',
@@ -19,7 +20,7 @@ export class AddPetComponent {
   public types!: Type[];
 
 
-  constructor(private petService: petService, private typeService: typeService, private formBuilder: FormBuilder){
+  constructor(private petService: petService, private typeService: typeService, private formBuilder: FormBuilder, private router: Router){
     this.newPetForm = formBuilder.group({
       petId: new FormControl(),
       petName: new FormControl('', Validators.required),
@@ -65,6 +66,7 @@ export class AddPetComponent {
       this.petService.addNew(pet).subscribe((res)=>{
         console.log(res);
         alert(res.message);
+        this.router.navigate(['/pets']);
       })
     }
   }

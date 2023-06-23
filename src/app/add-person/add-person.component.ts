@@ -6,6 +6,7 @@ import { Person } from '../model/Person';
 import { City } from '../model/City';
 import { HttpResponse } from '../network/HttpResponse';
 import { CommonModule } from '@angular/common'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-person',
@@ -18,7 +19,7 @@ export class AddPersonComponent {
   public newPersonForm!: FormGroup;
   public cities!: City[];
 
-  constructor(private personService: personService, private cityService: cityService, private formBuilder: FormBuilder){
+  constructor(private personService: personService, private cityService: cityService, private formBuilder: FormBuilder, private router:Router){
 
     this.newPersonForm = formBuilder.group({
       personJmbg: new FormControl('', Validators.required),
@@ -66,6 +67,7 @@ export class AddPersonComponent {
       this.personService.addNewPerson(person).subscribe((res)=>{
         console.log(res);
         alert(res.message);
+        this.router.navigate(['/people']);
       })
     }
   }

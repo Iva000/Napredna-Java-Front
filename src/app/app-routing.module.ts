@@ -9,9 +9,11 @@ import { UpdatePetComponent } from './update-pet/update-pet.component';
 import { AllAdoptionsComponent } from './all-adoptions/all-adoptions.component';
 import { AddAdoptionComponent } from './add-adoption/add-adoption.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { LoginPageGuestComponent } from './login-page-guest/login-page-guest.component';
 
 const routes: Routes = [
-  {path:'', component: LoginPageComponent},
+  {path:'', component: LoginPageGuestComponent},
+  {path:'login_guest', component: LoginPageGuestComponent},
   {path:'pets', component: AllPetsComponent},
   {path:'people', component: AllPeopleComponent},
   {path:'add_pet', component: AddPetComponent},

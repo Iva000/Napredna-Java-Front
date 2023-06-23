@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { userService } from '../services/userService';
+import { personService } from '../services/personService';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  selector: 'app-login-page-guest',
+  templateUrl: './login-page-guest.component.html',
+  styleUrls: ['./login-page-guest.component.css']
 })
-export class LoginPageComponent {
-
+export class LoginPageGuestComponent {
   public loginForm!: FormGroup;
 
-  constructor(private userService: userService, private router: Router, private formBuilder:FormBuilder){
+  constructor(private personService: personService, private router: Router, private formBuilder:FormBuilder){
     this.loginForm = formBuilder.group({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -27,11 +26,11 @@ export class LoginPageComponent {
       var username= this.loginForm.get('username')!.value;
       var password = this.loginForm.get('password')!.value;
 
-      this.userService.login(username, password).subscribe((res)=>{
+      this.personService.login(username, password).subscribe((res)=>{
         console.log(res);
         if(res.message!='Wrong username or password!'){
           alert(res.message);
-          this.userService.setSessionData(res);
+          this.personService.setSessionData(res);
           this.router.navigate(['/pets']);
         }else{
           alert("Wrong username or password!");
@@ -40,5 +39,4 @@ export class LoginPageComponent {
       })
     }
   }
-
 }

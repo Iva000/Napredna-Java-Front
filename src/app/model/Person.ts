@@ -8,4 +8,6 @@ export class Person{
     public phone_number!: String;
     public year_of_birth!: Number;
     public city!: City;
+    public username!: String;
+    public password!: String;
 }

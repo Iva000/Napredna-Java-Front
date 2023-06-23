@@ -1,9 +1,6 @@
-<h1>Login as shelter worker</h1>
+<h1>Login as guest user</h1>
 <div class="container">
-<div class="photo">
-    <img src="https://pbs.twimg.com/profile_images/1471176567736971266/3Zixw2Lc_400x400.jpg" alt="animals">
-    <!-- <a routerLink="/login_guest">Login as a user</a> -->
-</div>
+
 <form [formGroup] = "loginForm" action="#" id="form" (ngSubmit) = "login()">
     <label for="username">Username:</label>
     <input type="text" name="username" [formControlName]="'username'">
@@ -20,4 +17,8 @@
         <input type="submit" value="Login" class="button">
     </div>
 </form>
+<div class="photo">
+    <img src="https://pbs.twimg.com/profile_images/1471176567736971266/3Zixw2Lc_400x400.jpg" alt="animals">
+    <!-- <a routerLink="/login">Login as a shelter worker</a> -->
+</div>
 </div>

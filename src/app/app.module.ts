@@ -22,7 +22,8 @@ import { AddAdoptionComponent } from './add-adoption/add-adoption.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { PetCardComponent } from './pet-card/pet-card.component';
-import { AdoptionCardComponent } from './adoption-card/adoption-card.component'
+import { AdoptionCardComponent } from './adoption-card/adoption-card.component';
+import { LoginPageGuestComponent } from './login-page-guest/login-page-guest.component'
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AdoptionCardComponent } from './adoption-card/adoption-card.component'
     PersonCardComponent,
     PetCardComponent,
     AdoptionCardComponent,
+    LoginPageGuestComponent,
   ],
   imports: [
     BrowserModule,
