@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 import { petService } from '../services/petService';
 import { Pet } from '../model/Pet';
 import { HttpResponse } from '../network/HttpResponse';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AllPetsComponent {
 
+  @Input() removedPet!: EventEmitter<Pet>;
   public pets!: Pet[];
   public filteredPets: Pet[] = [];
 
@@ -26,16 +27,20 @@ export class AllPetsComponent {
     })
   }
 
-  delete(id: Number){
-    console.log(id);
-    this.petService.delete(id).subscribe((res)=>{
+  deletePet(p:Pet){
+    this.petService.delete(p.id).subscribe((res)=>{
       console.log(res);
-    })
-  }
+      alert([res.message]);
 
-  update(id:Number){
-    this.router.navigate(['/update_pet', id]);
-  }
+        this.pets.forEach((element,index)=>{
+          if(element.id==p.id) this.pets.splice(index,1);
+       
+    });
+
+  });
+}
+
+
 
   onSearch(search: String){
     if(!search){

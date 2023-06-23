@@ -1,17 +1,11 @@
-form{
-    margin-left: 35%;
-    border: 5px solid rgb(255, 164, 27);
+.gridContainer{
+    border: 5px solid  rgb(255, 164, 27) ;
     border-radius: 10%;
-    padding-left: 15px;
     margin-right: 10px;
-    padding-top: 20px;
-    width: 350px;
+    width: 300px;
     height: 300px;
-}
-
-h1{
-    text-align: center;
-    margin-bottom:60px;
+    padding-left: 15px;
+    padding-right: 5px;
 }
 
 .button{
@@ -20,8 +14,7 @@ h1{
     margin-right: 5px;
     margin-left: 5px;
     border-radius: 10%;
-    width: 150px;
-    height:30px;
+    width: 100px;
     border-color: rgb(82, 95, 225);
 }
 

@@ -42,6 +42,7 @@ export class AddPersonComponent {
 
   public addPerson(){
     if(!this.newPersonForm.valid){
+      alert("All fields are required!");
       return;
     }else{
       const person = new Person;
@@ -64,6 +65,7 @@ export class AddPersonComponent {
 
       this.personService.addNewPerson(person).subscribe((res)=>{
         console.log(res);
+        alert(res.message);
       })
     }
   }

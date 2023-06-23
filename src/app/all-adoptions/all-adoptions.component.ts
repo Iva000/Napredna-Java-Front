@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
 })
 export class AllAdoptionsComponent {
   public adoptions!: Adoption[];
-  public pipe = new DatePipe('en-US');
+  
 
   constructor(private adoptionService: adoptionService, private router: Router){}
 

@@ -49,6 +49,7 @@ export class AddAdoptionComponent {
 
   public addAdoption(){
     if(!this.newAdoptionForm.valid){
+      alert("All fields are required!");
       return;
     }else{
       const adoption = new Adoption;
@@ -75,6 +76,7 @@ export class AddAdoptionComponent {
 
       this.adoptionService.addNewAdoption(adoption).subscribe((res)=>{
         console.log(res);
+        alert(res.message);
       })
     }
   }

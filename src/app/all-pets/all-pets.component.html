@@ -7,17 +7,15 @@
 
     <body>
         <h1>All Pets</h1>
-        <input (input)="onSearch(search.value)" type="text" placeholder="Search by pet name" #search>
-        <div class="gridContainer">
-            <div class="petInfo" *ngFor="let pet of filteredPets">
-                <h4>Name: {{pet.name}}</h4>
-                <h4>Age: {{pet.age}}</h4>
-                <h4>Type: {{pet.type.name}}</h4>
-                <h4>Gender: {{pet.gender}}</h4>
-                <h4>Description: {{pet.description}}</h4>
-                <h4><button (click)="update(pet.id)">Change</button><button (click)="delete(pet.id)">Delete</button></h4>
+        <div class="searchPets">
+        <input (input)="onSearch(search.value)" type="text" placeholder="Search by pet name" #search class="search">
+    </div>
+        <div class="pets">
+        <app-pet-card *ngFor="let p of filteredPets"
+       [pet]="p"
+       (removedPet)="deletePet(p)"
 
-            </div>
-        </div>
+       ></app-pet-card>
+    </div>
     </body>
 

@@ -42,6 +42,7 @@ export class AddPetComponent {
 
   public addPet(){
     if(!this.newPetForm.valid){
+      alert("All fields are required!");
       return;
     }else{
       const pet = new Pet;
@@ -63,6 +64,7 @@ export class AddPetComponent {
 
       this.petService.addNew(pet).subscribe((res)=>{
         console.log(res);
+        alert(res.message);
       })
     }
   }

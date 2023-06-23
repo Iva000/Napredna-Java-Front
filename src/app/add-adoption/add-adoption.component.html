@@ -3,25 +3,33 @@
 
     <input type="hidden" autocomplete="on" [formControlName]="'adoptionId'">
 
-    <label >Date of adoption:</label>
+    <label >Date of adoption:   </label>
     <input type="date" name="adoptionDate" [formControlName]="'adoptionDate'" autocomplete="on">
     <br>
-
-    <label >Vet report before adoption:</label>
-    <input type="text" name="adoptionVetReport" [formControlName]="'adoptionVetReport'" autocomplete="on">
     <br>
 
-    <label >Pet:</label>
+    <label >Vet report before adoption:   </label>
+    <!-- <input type="text" name="adoptionVetReport" [formControlName]="'adoptionVetReport'" autocomplete="on"> -->
+    <textarea name="adoptionVetReport" [formControlName]="'adoptionVetReport'"></textarea>
+    <br>
+    <br>
+
+    <label >Pet:   </label>
     <select [formControlName]="'adoptionPet'">
         <option *ngFor="let pet of pets" value="{{pet.id}}">{{pet.type.name}} {{pet.name}}</option>
       </select>
     <br>
+    <br>
 
-    <label >Person:</label>
+    <label >Person:   </label>
     <select [formControlName]="'adoptionPerson'">
         <option *ngFor="let person of people" value="{{person.jmbg}}">{{person.name}} {{person.surname}}</option>
       </select>
     <br>
+    <br>
+    <br>
 
-    <input type="submit" value="Create new adoption">
+    <div class="buttons">
+      <input type="submit" value="Create new adoption" class="button">
+    </div>
 </form>

@@ -20,7 +20,9 @@ import { UpdatePetComponent } from './update-pet/update-pet.component';
 import { AllAdoptionsComponent } from './all-adoptions/all-adoptions.component';
 import { AddAdoptionComponent } from './add-adoption/add-adoption.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { PersonCardComponent } from './person-card/person-card.component'
+import { PersonCardComponent } from './person-card/person-card.component';
+import { PetCardComponent } from './pet-card/pet-card.component';
+import { AdoptionCardComponent } from './adoption-card/adoption-card.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { PersonCardComponent } from './person-card/person-card.component'
     AllAdoptionsComponent,
     AddAdoptionComponent,
     LoginPageComponent,
-    PersonCardComponent
+    PersonCardComponent,
+    PetCardComponent,
+    AdoptionCardComponent,
   ],
   imports: [
     BrowserModule,

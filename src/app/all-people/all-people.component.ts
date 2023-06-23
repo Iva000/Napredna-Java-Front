@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 import { Person } from '../model/Person';
 import { personService } from '../services/personService';
 import { HttpResponse } from '../network/HttpResponse';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AllPeopleComponent {
 
+  @Input() removedPerson!: EventEmitter<Person>;
   public people!: Person[];
   public filteredPeople: Person[] =[];
 
@@ -26,17 +27,6 @@ export class AllPeopleComponent {
     })
   }
 
-  delete(jmbg: String){
-    console.log(jmbg);
-    this.personService.deletePerson(jmbg).subscribe((res)=>{
-      console.log(res);
-    })
-  }
-
-  update(jmbg: String){
-    this.router.navigate(['/update_person', jmbg]);
-  }
-
   onSearch(search: String){
     if(!search){
       this.filteredPeople=this.people;
@@ -47,4 +37,16 @@ export class AllPeopleComponent {
     }
   }
 
+  deletePerson(p:Person){
+    this.personService.deletePerson(p.jmbg).subscribe((res)=>{
+      console.log(res);
+      alert([res.message]);
+
+        this.people.forEach((element,index)=>{
+          if(element.jmbg==p.jmbg) this.people.splice(index,1);
+       
+    });
+
+  });
+}
 }

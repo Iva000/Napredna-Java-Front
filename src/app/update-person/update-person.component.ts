@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { City } from '../model/City';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { personService } from '../services/personService';
 import { cityService } from '../services/cityService';
 import { Person } from '../model/Person';
 import { HttpResponse } from '../network/HttpResponse';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-update-person',
@@ -17,35 +16,35 @@ export class UpdatePersonComponent {
 
   public updatePersonForm!: FormGroup;
   public cities!: City[];
+  public people!: Person[];
   receivedInput!: String;
   public person1!: Person;
-  //object!: Object[];
+  // public isOk!:Number;
   
 
-  constructor(private route: ActivatedRoute,private personService: personService, private cityService: cityService, private formBuilder: FormBuilder){
+  constructor(private route: ActivatedRoute,private personService: personService, private cityService: cityService, private formBuilder: FormBuilder, private router:Router){
+    // this.isOk=0;
+    
     this.route.params.subscribe((params) => {
       this.receivedInput = params['input'];
       });
   
       this.cityService.getAll().subscribe({
         next:(response: HttpResponse)=>{
-  
           this.cities = response.data.values as City[];
           
         }
       })
   
-      this.personService.getPerson(this.receivedInput).subscribe((response)=>{
-          console.log(response);
-          //  const geted= response.data.values;
-          //  console.log(geted);
-          //  console.log(String(geted[0]));
-          //  console.log({{ geted[0] }});
-            
-           //this.person.jmbg = Person(geted);
-           //this.person= String(this.object[0].data);
-           
-      });
+      this.personService.getAll().subscribe((response)=>{
+        this.people=response.data.values as Person[];
+
+        this.people.forEach(element => {
+          if(element.jmbg===this.receivedInput){
+            this.person1=element;
+          }
+        });
+      })
    
     this.updatePersonForm = formBuilder.group({
       personJmbg: new FormControl(),
@@ -65,6 +64,7 @@ export class UpdatePersonComponent {
 
   updatePerson(){
     if(!this.updatePersonForm.valid){
+      alert("All fields are required!");
       return;
     }else{
       const person = new Person;
@@ -87,7 +87,13 @@ export class UpdatePersonComponent {
 
       this.personService.updatePerson(person).subscribe((res)=>{
         console.log(res);
-      })
+        alert(res.message);
+        this.router.navigate(["/people"]);
+
+      });
+
+      // this.isOk=1;
+      
     }
   }
 }

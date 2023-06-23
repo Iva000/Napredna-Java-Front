@@ -7,15 +7,13 @@
 
     <body>
         <h1>All Adoptions</h1>
-        <div class="gridContainer">
-            <div class="petInfo" *ngFor="let adoption of adoptions">
-                <h4>Date: {{pipe.transform(adoption.date,'dd.MM.yyyy.')}}</h4>
-                <h4>Vet report before adopting: {{adoption.vetReport}}</h4>
-                <h4>Pet: {{adoption.petId.type.name}} {{adoption.petId.name}}</h4>
-                <h4>Person: {{adoption.personId.name}} {{adoption.personId.surname}}</h4>
-                <h4><button (click)="update(adoption.adoptionId)">Change</button><button (click)="delete(adoption.adoptionId)">Delete</button></h4>
-
-            </div>
+        
+        <div class="adoptions">
+            <app-adoption-card *ngFor="let a of adoptions"
+            [adoption] = "a"
+            (removedAdoption)="delete(a.adoptionId)"
+            ></app-adoption-card>
         </div>
+        
     </body>
 

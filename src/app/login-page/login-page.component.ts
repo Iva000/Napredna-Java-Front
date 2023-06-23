@@ -21,6 +21,7 @@ export class LoginPageComponent {
 
   login(){
     if(!this.loginForm.valid){
+      alert("Both username and password are mandatory!");
       return;
     }else{
       var username= this.loginForm.get('username')!.value;
@@ -29,7 +30,11 @@ export class LoginPageComponent {
       this.userService.login(username, password).subscribe((res)=>{
         console.log(res);
         if(res.message!='Wrong username or password!'){
+          alert(res.message);
           this.router.navigate(['/pets']);
+        }else{
+          alert("Wrong username or password!");
+          return;
         }
       })
     }

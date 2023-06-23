@@ -1,12 +1,22 @@
 <h1>Login</h1>
+<div class="container">
+<div class="photo">
+    <img src="https://pbs.twimg.com/profile_images/1471176567736971266/3Zixw2Lc_400x400.jpg" alt="animals">
+</div>
 <form [formGroup] = "loginForm" action="#" id="form" (ngSubmit) = "login()">
-    <label for="username">Username</label>
+    <label for="username">Username:</label>
     <input type="text" name="username" [formControlName]="'username'">
     <br>
-
-    <label for="password">Password</label>
-    <input type="password" name="password" [formControlName]="'password'">
     <br>
 
-    <input type="submit" value="Login">
+    <label for="password">Password:</label>
+    <input type="password" name="password" [formControlName]="'password'">
+    <br>
+    <br>
+    <br>
+
+    <div class="buttons">
+        <input type="submit" value="Login" class="button">
+    </div>
 </form>
+</div>

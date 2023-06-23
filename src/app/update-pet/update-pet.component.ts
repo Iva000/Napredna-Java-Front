@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Type } from '../model/Type';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { petService } from '../services/petService';
 import { typeService } from '../services/typeService';
 import { HttpResponse } from '../network/HttpResponse';
@@ -17,29 +17,33 @@ export class UpdatePetComponent {
   public updatePetForm!: FormGroup;
   public types!: Type[];
   receivedInput!: Number;
+  public pet1!: Pet;
+  public pets!: Pet[];
 
-  constructor(private route: ActivatedRoute,private petService: petService, private typeService: typeService, private formBuilder: FormBuilder){
+  constructor(private route: ActivatedRoute,private petService: petService, private typeService: typeService, private formBuilder: FormBuilder, private router:Router){
     this.route.params.subscribe((params) => {
       this.receivedInput = params['input'];
       });
   
       this.typeService.getAll().subscribe({
         next:(response: HttpResponse)=>{
-  
           this.types = response.data.values as Type[];
-          
         }
       })
   
-      this.petService.getPet(this.receivedInput).subscribe((response)=>{
-          console.log(response);
-          //  const geted= response.data.values;
-          //  console.log(geted);
-          //  console.log(String(geted[0]));
-          //  console.log({{ geted[0] }});
-            
-           //this.person.jmbg = Person(geted);
-           //this.person= String(this.object[0].data);
+      this.petService.getAll().subscribe((response)=>{
+        this.pets=response.data.values as Pet[];
+        console.log("usao u uzimanje svih");
+        console.log(this.receivedInput);
+        console.log(this.pets);
+
+        this.pets.forEach(element => {
+          if(element.id==this.receivedInput){
+            this.pet1=element;
+            console.log("uzeta vrednost za pet1");
+            console.log(this.pet1);
+          }
+        });
            
       });
 
@@ -55,6 +59,7 @@ export class UpdatePetComponent {
 
   updatePet(){
     if(!this.updatePetForm.valid){
+      alert("All fields are required!");
       return;
     }else{
       const pet = new Pet;
@@ -76,6 +81,8 @@ export class UpdatePetComponent {
 
       this.petService.updatePet(pet).subscribe((res)=>{
         console.log(res);
+        alert(res.message);
+        this.router.navigate(['/pets']);
       })
     }
     
