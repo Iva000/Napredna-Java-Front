@@ -23,7 +23,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { PetCardComponent } from './pet-card/pet-card.component';
 import { AdoptionCardComponent } from './adoption-card/adoption-card.component';
-import { LoginPageGuestComponent } from './login-page-guest/login-page-guest.component'
+import { LoginPageGuestComponent } from './login-page-guest/login-page-guest.component';
+import { RequestsComponent } from './requests/requests.component';
+import { RegisterComponent } from './register/register.component'
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { LoginPageGuestComponent } from './login-page-guest/login-page-guest.com
     PetCardComponent,
     AdoptionCardComponent,
     LoginPageGuestComponent,
+    RequestsComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,18 +17,23 @@ export class AllAdoptionsComponent {
   constructor(private adoptionService: adoptionService, private router: Router){}
 
   ngOnInit(){
-    this.adoptionService.getAll().subscribe({
+    this.adoptionService.getAdoptionStatus(1).subscribe({
       next:(response: HttpResponse)=>{
         this.adoptions = response.data.values as Adoption[];
       }
     })
   }
 
-  delete(id: Number){
-    console.log(id);
-    this.adoptionService.deleteAdoption(id).subscribe((res)=>{
+  delete(a: Adoption){
+    this.adoptionService.deleteAdoption(a.adoptionId).subscribe((res)=>{
       console.log(res);
+      alert([res.message]);
+
+      this.adoptions.forEach((element,index)=>{
+          if(element.adoptionId==a.adoptionId) this.adoptions.splice(index,1);
+       
     })
+  })
   }
 
   update(id:Number){

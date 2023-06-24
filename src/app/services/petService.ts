@@ -22,6 +22,10 @@ export class petService{
         return this.http.get<HttpResponse>(environment.backendServerUrl + "/pets/all")
     }
 
+    public getWithStatus(status: Number):Observable<HttpResponse>{
+        return this.http.get<HttpResponse>(environment.backendServerUrl+"/pets/withStatus/"+status);
+    }
+
     public delete(petId: Number): Observable<HttpResponse>{
         return this.http.post<HttpResponse>(environment.backendServerUrl + "/pets/delete",petId);
     }

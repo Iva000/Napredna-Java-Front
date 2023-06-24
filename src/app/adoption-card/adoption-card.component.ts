@@ -10,13 +10,26 @@ import { DatePipe } from '@angular/common';
 export class AdoptionCardComponent {
 
   @Input() adoption!: Adoption;
+  @Input() comeFrom!: Number;
   @Output() removedAdoption = new EventEmitter<Adoption>();
+  @Output() declinedAdoption = new EventEmitter<Adoption>();
+  @Output() acceptedAdoption = new EventEmitter<Adoption>();
   public pipe = new DatePipe('en-US');
 
   constructor(){}
 
   delete(id:Number){
     this.removedAdoption.emit(this.adoption);
+    
+  }
+
+  decline(id:Number){
+    this.declinedAdoption.emit(this.adoption);
+    
+  }
+
+  accept(id:Number){
+    this.acceptedAdoption.emit(this.adoption);
     
   }
 }

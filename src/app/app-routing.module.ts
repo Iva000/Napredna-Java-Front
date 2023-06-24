@@ -10,6 +10,8 @@ import { AllAdoptionsComponent } from './all-adoptions/all-adoptions.component';
 import { AddAdoptionComponent } from './add-adoption/add-adoption.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginPageGuestComponent } from './login-page-guest/login-page-guest.component';
+import { RequestsComponent } from './requests/requests.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path:'', component: LoginPageGuestComponent},
@@ -23,6 +25,8 @@ const routes: Routes = [
   {path:'adoptions', component: AllAdoptionsComponent},
   {path:'add_adoption', component: AddAdoptionComponent},
   {path:'login', component: LoginPageComponent},
+  {path:'requests', component: RequestsComponent},
+  {path:'register', component: RegisterComponent},
 ];
 
 @NgModule({

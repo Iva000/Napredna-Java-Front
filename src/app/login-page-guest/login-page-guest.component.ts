@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { personService } from '../services/personService';
 import { Router } from '@angular/router';
+import { Person } from '../model/Person';
 
 @Component({
   selector: 'app-login-page-guest',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginPageGuestComponent {
   public loginForm!: FormGroup;
+  public person!: Person;
 
   constructor(private personService: personService, private router: Router, private formBuilder:FormBuilder){
     this.loginForm = formBuilder.group({
@@ -30,7 +32,21 @@ export class LoginPageGuestComponent {
         console.log(res);
         if(res.message!='Wrong username or password!'){
           alert(res.message);
-          this.personService.setSessionData(res);
+
+          this.personService.getAll().subscribe((data)=>{
+            var people = data.data.values as Person[];
+
+            people.forEach(element => {
+              if(element.username==username){
+                this.person=element;
+              }
+            });
+            console.log("nakon prijave osoba:");
+            console.log(this.person);
+            this.personService.setSessionData(res, this.person);
+          })
+
+          
           this.router.navigate(['/pets']);
         }else{
           alert("Wrong username or password!");

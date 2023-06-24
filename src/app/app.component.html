@@ -17,7 +17,8 @@
                 <li><a routerLink="/add_pet">Add pet</a></li>
                 <li><a routerLink="/add_person">Add person</a></li>
                 <li><a routerLink="/add_adoption">Add adoption</a></li>
-                <li><a routerLink="/login_guest" (click)="logout()">Logout</a></li>
+                <li><a routerLink="/requests">Requests</a></li>
+                <li><a routerLink="/login_guest" (click)="logout()" class="logout">Logout</a></li>
               </div>
             </router-outlet>
             
@@ -36,8 +37,8 @@
           <router-outlet>
             <div class="justLinks">
               <li><a routerLink='/pets'>Pets</a></li>
-              <li><a routerLink="/adoptions">My adoptions</a></li>
-              <li><a routerLink="/login_guest" (click)="logout()">Logout</a></li>
+              <li><a routerLink="/requests">My adoptions</a></li>
+              <li><a routerLink="/login_guest" (click)="logout()" class="logout">Logout</a></li>
             </div>
           </router-outlet>
           

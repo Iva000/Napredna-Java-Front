@@ -4,13 +4,15 @@ import { environment } from 'src/environments/environment';
 import {Observable} from 'rxjs';
 import {HttpResponse} from 'src/app/network/HttpResponse';
 import { Adoption } from '../model/Adoption';
+import { Person } from '../model/Person';
+import { personService } from './personService';
 
 @Injectable({
     providedIn: 'root'
 })
 export class adoptionService{
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient, private personService: personService){}
     
     public getAll(): Observable <HttpResponse>{
         return this.http.get<HttpResponse>(environment.backendServerUrl + "/adoptions/all")
@@ -25,10 +27,18 @@ export class adoptionService{
     }
 
     public getAdoption(id:Number): Observable<HttpResponse>{
-        return this.http.get<HttpResponse>(environment.backendServerUrl+"/adoptions/getPerson/"+id);
+        return this.http.get<HttpResponse>(environment.backendServerUrl+"/adoptions/getAdoption/"+id);
     }
 
     public updateAdoption(adoption: Adoption):Observable<HttpResponse>{
-        return this.http.post<HttpResponse>(environment.backendServerUrl+"/adoption/update", adoption);
+        return this.http.post<HttpResponse>(environment.backendServerUrl+"/adoptions/update", adoption);
+    }
+
+    public getPersonsAdoptions(): Observable<HttpResponse>{
+        return this.http.post<HttpResponse>(environment.backendServerUrl+"/adoptions/getPersonsAdoptions", this.personService.getSpesificPerson());
+    }
+
+    public getAdoptionStatus(status:Number): Observable<HttpResponse>{
+        return this.http.get<HttpResponse>(environment.backendServerUrl+"/adoptions/getAdoptionStatus/"+status);
     }
 }

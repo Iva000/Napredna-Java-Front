@@ -5,7 +5,16 @@
         <h4>Type: {{pet.type.name}}</h4>
         <h4>Gender: {{pet.gender}}</h4>
         <h4>Description: {{pet.description}}</h4>
-        <h4 class="buttons"><button (click)="update(pet.id)" class="button">Change</button><button (click)="delete(pet.id)" class="button">Delete</button></h4>
+        <h4 class="buttons" *ngIf="userService.getUserStatus()=='worker'">
+            <button (click)="update(pet.id)" class="button">Change</button>
+            <button (click)="delete(pet.id)" class="button">Delete</button>
+        </h4>
+        <h4 class="buttons" *ngIf="personService.getUserStatus()=='guest' && pet.status==0">
+            <button (click)="adopt(pet.id)" class="button">Adopt</button>
+        </h4>
+        <h4 class="buttons" *ngIf="personService.getUserStatus()=='guest' && pet.status==1" style="color: red;">
+            Adopted!
+        </h4>
 
     </div>
 </div>

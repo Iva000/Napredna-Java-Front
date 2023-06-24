@@ -35,7 +35,7 @@ export class AddAdoptionComponent {
   }
 
   ngOnInit(){
-    this.petService.getAll().subscribe({
+    this.petService.getWithStatus(0).subscribe({
       next:(response: HttpResponse)=>{
         this.pets = response.data.values as Pet[];
       }
@@ -55,7 +55,6 @@ export class AddAdoptionComponent {
     }else{
       const adoption = new Adoption;
 
-      // pet.id=111;
       adoption.date= this.newAdoptionForm.get('adoptionDate')!.value;
       adoption.vetReport = this.newAdoptionForm.get('adoptionVetReport')!.value;
 
@@ -65,6 +64,12 @@ export class AddAdoptionComponent {
           pet=element;
         }
       });
+      pet.status=1;
+
+      this.petService.updatePet(pet).subscribe((res)=>{
+        console.log(res);
+      })
+
       adoption.petId=pet;
       
       var person = new Person;
@@ -74,6 +79,8 @@ export class AddAdoptionComponent {
         }
       });
       adoption.personId=person;
+
+      adoption.status = 1;
 
       this.adoptionService.addNewAdoption(adoption).subscribe((res)=>{
         console.log(res);

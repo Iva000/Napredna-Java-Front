@@ -8,5 +8,6 @@ export class Pet{
     public type!: Type;
     public description!: String;
     public gender!: String;
+    public status!: Number;
 
 }

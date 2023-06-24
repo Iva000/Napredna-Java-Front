@@ -11,7 +11,8 @@
         <div class="adoptions">
             <app-adoption-card *ngFor="let a of adoptions"
             [adoption] = "a"
-            (removedAdoption)="delete(a.adoptionId)"
+            [comeFrom]="1"
+            (removedAdoption)="delete(a)"
             ></app-adoption-card>
         </div>
         

@@ -10,6 +10,8 @@ import { Person } from '../model/Person';
 })
 export class personService{
 
+    private personthis!: Person;
+
     constructor(private http: HttpClient){}
     
     public getAll(): Observable <HttpResponse>{
@@ -40,13 +42,29 @@ export class personService{
         return this.http.get<HttpResponse>(environment.backendServerUrl + "/people/login/"+username+"/"+password);
     }
 
-    public setSessionData(res:any){
+    public setSessionData(res:any, person: Person){
         sessionStorage.setItem('user', String(res.username));
+        // sessionStorage.setItem('jmbg', String(person.jmbg));
         this.setUserStatus();
+        this.setPerson(person);
     }
+
+    // public getUserJmbg(){
+    //     return sessionStorage.getItem('jmbg');
+    // }
 
     public setUserStatus(){
         sessionStorage.setItem('currentUser', 'guest');
+    }
+
+    public setPerson(person: Person){
+        console.log("U servisu dodeljuje osobu:");
+        console.log(person);
+        this.personthis = person;
+    }
+
+    public getSpesificPerson(){
+        return this.personthis;
     }
 
     public getUserStatus(){
@@ -55,5 +73,6 @@ export class personService{
 
     public logOut(){
         sessionStorage.clear();
+        this.personthis = new Person();
       }
 }
