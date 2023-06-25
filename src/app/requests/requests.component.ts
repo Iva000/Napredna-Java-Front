@@ -63,22 +63,28 @@ export class RequestsComponent {
     });
 
     var pet = this.adoption.petId;
-    pet.status=1;
+    pet.status=0;
 
     this.petService.updatePet(pet).subscribe((res)=>{
       console.log(res);
     })
 
-    this.adoption.status = 1;
+     this.adoption.status = 1;
 
     this.adoptionService.updateAdoption(this.adoption).subscribe((res)=>{
       console.log(res);
     });
     
     this.adoptions.forEach((element,index)=>{
-      if(element.adoptionId==this.adoption.adoptionId) this.adoptions.splice(index,1);
-   
-})
+       if((element.petId.id==pet.id) && (element.adoptionId!==this.adoption.adoptionId)){
+        element.status=2;
+        this.adoptionService.updateAdoption(element).subscribe((res)=>{
+          console.log(res);
+        })
+        
+      }
+    })
+    this.adoptions = this.adoptions.filter( a => a.status ==0)
   }
 
 }

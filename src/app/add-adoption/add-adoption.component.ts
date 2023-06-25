@@ -35,7 +35,7 @@ export class AddAdoptionComponent {
   }
 
   ngOnInit(){
-    this.petService.getWithStatus(0).subscribe({
+    this.petService.getWithStatus(1).subscribe({
       next:(response: HttpResponse)=>{
         this.pets = response.data.values as Pet[];
       }
@@ -64,7 +64,7 @@ export class AddAdoptionComponent {
           pet=element;
         }
       });
-      pet.status=1;
+      pet.status=0;
 
       this.petService.updatePet(pet).subscribe((res)=>{
         console.log(res);

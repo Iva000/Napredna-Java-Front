@@ -42,7 +42,10 @@ body{
     
 }
 
-li a.logout{
-    position: right;
-    right: 100px
+.logout1{
+    margin-left: 650px;
+}
+
+.logout2{
+    margin-left: 1100px;
 }

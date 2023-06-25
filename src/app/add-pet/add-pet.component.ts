@@ -16,7 +16,6 @@ import { Router } from '@angular/router';
 export class AddPetComponent {
 
   public newPetForm!: FormGroup;
-  //public petName!: String;
   public types!: Type[];
 
 
@@ -27,7 +26,8 @@ export class AddPetComponent {
       petType: new FormControl('', Validators.required),
       petGender: new FormControl('', Validators.required),
       petAge: new FormControl('', Validators.required),
-      petDescription: new FormControl()
+      petDescription: new FormControl(),
+      petImage: new FormControl(),
     });
   }
 
@@ -60,6 +60,8 @@ export class AddPetComponent {
       pet.gender= this.newPetForm.get('petGender')!.value;
       pet.description= this.newPetForm.get('petDescription')!.value;
       pet.age= Number(this.newPetForm.get('petAge')!.value);
+      pet.image = this.newPetForm.get('petImage')!.value;
+      pet.status = 1;
       console.log(pet.name);
       console.log(pet.id);
 

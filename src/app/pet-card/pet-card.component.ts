@@ -22,7 +22,11 @@ export class PetCardComponent {
   constructor(private petService: petService, private router:Router, public userService: userService, public personService: personService, public adoptionService: adoptionService){}
 
   delete(id: Number){
-    this.removedPet.emit(this.pet);
+    if(this.pet.status==0){
+      alert("This pet can't be deleted!")
+    }else{
+      this.removedPet.emit(this.pet);
+    }
   }
 
   update(id:Number){

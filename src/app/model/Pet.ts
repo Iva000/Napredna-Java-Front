@@ -9,5 +9,6 @@ export class Pet{
     public description!: String;
     public gender!: String;
     public status!: Number;
+    public image!: String;
 
 }

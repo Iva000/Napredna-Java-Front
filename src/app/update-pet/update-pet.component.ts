@@ -53,7 +53,8 @@ export class UpdatePetComponent {
         petType: new FormControl('', Validators.required),
         petGender: new FormControl('', Validators.required),
         petAge: new FormControl('', Validators.required),
-        petDescription: new FormControl()
+        petDescription: new FormControl(),
+        petImage: new FormControl(),
       });
   }
 
@@ -76,6 +77,7 @@ export class UpdatePetComponent {
       pet.gender= this.updatePetForm.get('petGender')!.value;
       pet.description= this.updatePetForm.get('petDescription')!.value;
       pet.age= Number(this.updatePetForm.get('petAge')!.value);
+      pet.image= this.updatePetForm.get('petImage')!.value;
       console.log(pet.name);
       console.log(pet.id);
 
